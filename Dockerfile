@@ -7,3 +7,9 @@ COPY init.groovy.d/basic-security.groovy /usr/share/jenkins/ref/init.groovy.d/ba
 USER root
 RUN apt-get update && apt-get install -y sudo
 USER jenkins
+
+# Открываем порт 8080 для HTTP
+EXPOSE 8080
+
+# Стартовая команда для запуска Jenkins
+CMD ["java", "-jar", "/usr/share/jenkins/jenkins.war", "--httpPort=8080"]
